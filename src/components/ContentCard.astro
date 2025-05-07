@@ -1,0 +1,17 @@
+---
+const { Heading1, Heading2 } = Astro.props
+---
+
+<div class="relative mt-4 py-4 content-card overflow-hidden">
+	<div class="bg-green-500 rounded-xl relative p-4 overflow-visible">
+		<div
+			class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs px-2 py-1 rounded"
+		>
+			About
+		</div>
+		<div class="bg-white rounded-xl p-8 overflow-hidden">
+			<h1 class="text-4xl font-bold">{Heading1}</h1>
+			<h1 class="text-4xl font-bold">{Heading2}</h1>
+		</div>
+	</div>
+</div>

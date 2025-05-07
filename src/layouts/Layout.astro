@@ -1,0 +1,46 @@
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="Midnight apes liquid (404) art on Solana"
+		/>
+		<meta
+			property="og:description"
+			content="Midnight apes liquid (404) art on Solana"
+		/>
+		<meta property="og:title" content="Midnight Apes on Solana" />
+		<meta
+			name="twitter:card"
+			content="Midnight Apes liquid art launching on Solana"
+		/>
+		<meta name="twitter:title" content="Midnight Apes on Solana" />
+		<meta name="twitter:description" content="Midnight Apes on Solana." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="src/styles/global.css" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<script
+			defer
+			src="https://rp.seotc.com/script.js"
+			data-website-id="f1f31c64-a4b9-46e7-9a0c-7e3137878fcb"></script>
+		<style>
+			body::-webkit-scrollbar {
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="bg-black antialiased">
+		<slot />
+	</body>
+</html>

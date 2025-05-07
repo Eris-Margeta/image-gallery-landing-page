@@ -1,0 +1,78 @@
+---
+import { Picture } from 'astro:assets'
+import ContentCard from '../components/ContentCard.astro'
+
+type GalleryItem =
+  | { type: 'image'; src: string; alt: string }
+  | { type: 'contentCard'; Heading1: string; Heading2: string }
+
+const images: GalleryItem[] = Array.from({ length: 14 }, (_, i) => ({
+  type: 'image',
+  src: `/optimized-apes/img${i + 1}.webp`,
+  alt: `Image ${i + 1}`,
+}))
+
+const contentCardData: GalleryItem = {
+  type: 'contentCard',
+  Heading1: 'MINT',
+  Heading2: '10JUNE2024',
+}
+
+const contentCardIndex = Math.floor(Math.random() * (images.length + 1))
+images.splice(contentCardIndex, 0, contentCardData)
+---
+
+<div id="image-container">
+  {
+    images.map((item) =>
+      item.type === 'image' ? (
+        <div class="group image-wrapper relative mb-5 block w-full  overflow-hidden rounded-lg shadow-highlight">
+          <div class="transform brightness-90 transition duration-1000 ease-in-out will-change-transform group-hover:scale-105 group-hover:brightness-110 inset-0">
+            <Picture
+              src={item.src}
+              alt={item.alt}
+              decoding="async"
+              loading="lazy"
+              width={720}
+              height={720}
+              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
+            />
+          </div>
+        </div>
+      ) : (
+        <ContentCard Heading1={item.Heading1} Heading2={item.Heading2} />
+      ),
+    )
+  }
+</div>
+
+<script>
+  // Function to shuffle elements in an array
+  function shuffleArray<T>(array: T[]): T[] {
+    let m = array.length,
+      t: T,
+      i: number
+
+    while (m) {
+      i = Math.floor(Math.random() * m--)
+      t = array[m]
+      array[m] = array[i]
+      array[i] = t
+    }
+    return array
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('image-container')
+    if (!container) {
+      console.error('Container not found!')
+      return
+    }
+
+    const nodes = Array.from(container.children) as Element[]
+    const shuffledNodes = shuffleArray(nodes)
+
+    container.innerHTML = ''
+    shuffledNodes.forEach((node) => container.appendChild(node))
+  })
+</script>
