@@ -1,10 +1,11 @@
 # Image Galery Landing Page
 
+Originally created for the midnight project.
+https://midnightapes.com/
 
 Deployed on: 
 https://midnight-gallery-homepage.netlify.app/
 
-Originally created for the midnight project.
 
 Made with Astro
 
